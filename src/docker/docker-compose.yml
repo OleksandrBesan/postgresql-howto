@@ -1,0 +1,53 @@
+version: "3"
+
+services: 
+    db:
+        container_name: postgres_container
+        image: postgres:13.3
+        restart: always
+        environment:
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=db 
+        volumes:
+            - pgdata:/var/lib/postgresql/data 
+            - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql 
+        ports:
+            - "5432:5432"
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres -d db"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 10s 
+        networks:
+            - postgres
+        deploy:
+            resources:
+                limits:
+                    cpus: '1'
+                    memory: 4G
+    pgadmin:
+        container_name: pgadmin_container
+        image: dpage/pgadmin4:5.7
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "alexandr.besan@gmail.com"
+            PGADMIN_DEFAULT_PASSWORD: "12345"
+            PGADMIN_CONFIG_SERVER_MODE: "False"
+        volumes:
+            - ./pgadmin:/var/lib/pgadmin
+        ports:
+            - "5050:80"
+        restart: unless-stopped
+        deploy:
+            resources:
+                limits:
+                    cpus: '0.5'
+                    memory: 1G
+        networks:
+            - postgres
+networks:
+    postgres:
+        driver: bridge 
+volumes: 
+    pgdata:  
