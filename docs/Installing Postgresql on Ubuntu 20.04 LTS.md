@@ -46,7 +46,7 @@ Enable startup postgresql
 ```bash
 sudo systemctl enable postgresql
 ```
-### Access PostgreSQL Server
+### Access PostgreSQL Server for everyone
 ```bash
 sudo vi /etc/postgresql/13/main/postgresql.conf
 ```
@@ -54,14 +54,14 @@ Change the following line under the “CONNECTIONS AND AUTHENTICATIONS” sectio
 ```
 listen_addresses = ‘*’
 ```
+
 ### Allow Incoming Client to Connect
 ```bash
 sudo vi /etc/postgresql/13/main/pg_hba.conf
 ```
 ```
 Line = host all all 0.0.0.0/0 md5
-```
-
+``` 
 ###  Adjust Firewall Settings
 You should make sure that the firewall does not stop incoming connections through the PostgreSQL port 5432. To do this, input the following command in the terminal window.
 If there is any firewall..
@@ -112,7 +112,7 @@ sudo adduser admin
 ```bash
 sudo -u admin psql
 ```
-#  Install pgAdmin4
+#  Install pgAdmin4 & pgagent 
 
 First, install all the required dependencies using the following command:
 ```bash
@@ -286,3 +286,24 @@ sudo rm -rf /etc/pgagent.conf
 
 After reboot 
 sudo deluser postgres
+
+
+
+
+# References 
+## Install Postgresql 
+[1.Getting Started With Postgres 13 on Ubuntu 20.04](https://pgdash.io/blog/postgres-13-getting-started.html)
+## Upgrade PostgreSQL
+[How to upgrade PostgreSQL from 12 to 13](https://www.kostolansky.sk/posts/upgrading-to-postgresql-12/)
+
+## Configure Ubuntu 
+[1.Configure and prepare Ubuntu for install](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
+
+### PGAdmin 
+
+[1.How to Install PostgreSQL with pgAdmin4 on Ubuntu 20.04](https://snapshooter.com/learn/postgresql/install-pgadmin-ubuntu-20.04)
+[2.pgAgent install](https://www.howtoinstall.me/ubuntu/18-04/pgagent/)
+[3.Configure Secure Setting PgAdmin](https://www.tutorialdba.com/2017/09/how-do-you-use-pgagent-with-securely.html)
+[4.Install pgAgent on Postgres 13](https://gist.github.com/peterneave/83cefce2a081add244ad7dc1c53bc0c3) 
+
+
