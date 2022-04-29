@@ -299,7 +299,7 @@ sudo deluser postgres
 ## Configure Ubuntu 
 [1.Configure and prepare Ubuntu for install](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
 
-### PGAdmin 
+## PGAdmin 
 
 [1.How to Install PostgreSQL with pgAdmin4 on Ubuntu 20.04](https://snapshooter.com/learn/postgresql/install-pgadmin-ubuntu-20.04)
 [2.pgAgent install](https://www.howtoinstall.me/ubuntu/18-04/pgagent/)
