@@ -17,3 +17,4 @@ The collection of docs, scripts, procedures for the main support of postgresql D
 -  [1. Install and configure Postgres_fdw in Postgres Database](docs/Extensions/postgres_fdw.md)
 
 -  [2. Install and configure Oracle_fdw in Postgres Database](docs/Extensions/oracle_fdw.md)
+-  [3. Install plpython](docs/Extensions/plpython.md)
