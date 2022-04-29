@@ -1,4 +1,4 @@
-# Installing ned drive Ubuntu and automount on load
+# Installing new drive Ubuntu and automount on load
 ## 1. Create the dir for mount 
 ```bash 
 sudo mkdir data 
