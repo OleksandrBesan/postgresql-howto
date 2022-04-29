@@ -11,6 +11,7 @@ The collection of docs, scripts, procedures for the main support of postgresql D
 
 -   [1. Install new drive and configure tablespaces Postgresql  on Ubuntu 20.04](docs/Administration/Install%20drive%20Ubuntu%20and%20Tablespace%20Postgresql.md)
 -   [2. Role model of access rights](docs/Administration/Role%20model%20of%20access%20rights.md)
+-   [3. Email function](src/sql/administration/function.email.corporate.sql)
 ## Extensions 
 
 
