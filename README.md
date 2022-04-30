@@ -19,8 +19,3 @@ The collection of docs, scripts, procedures for the main support of postgresql D
 
 -  [2. Install and configure Oracle_fdw in Postgres Database](docs/Extensions/oracle_fdw.md)
 -  [3. Install plpython](docs/Extensions/plpython.md)
-
-## Usefull scripts 
-
-- [1. Search in tables Postgresql ](src/sql/searchInTables.sql)
-- [2. Import a lot of csv to the dbs by python](src/python/import%20a%20lot%20of%20%20csv%20from%20directory%20to%20the%20DB.ipynb)
