@@ -71,8 +71,4 @@ Create table in specific tablespace
 ```sql 
 CREATE table schema.tablename (x int) TABLESPACE drive;
 ```
-
-Change the default tablespace for the db
-```sql
-alter database dwh set default_tablespace to data_disk1;
-```
+ 
