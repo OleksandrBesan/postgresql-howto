@@ -25,6 +25,12 @@ WHERE t.schema_name !~~ 'pg_%'::text
 ORDER BY   t.total_size_obj DESC;
 ```
 
+General info about vacuum
+```sql
+
+select *
+from pg_stat_all_tables;
+```
 ## Defragmantation 
 
 ### Install pgstattuple
