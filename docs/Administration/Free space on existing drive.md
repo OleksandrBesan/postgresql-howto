@@ -59,7 +59,25 @@ To free space you need to do
 VACUUM (VERBOSE, FULL) test;
 ```
 
+Beware that [FULL](https://www.postgresql.org/docs/current/sql-vacuum.html) require extra disk space , because it writes the new copy of the table. 
+
 Actually its usefull to run VACUUM ones in a while on heavily updated tables. 
+
+
+```sql 
+SELECT * FROM pgstatindex('test_index');
+``` 
+
+pgstatindex - for b-tree index to estimate , and pgstathashindex for a hash index to estimate 
+
+for a b-Tree you should look for leaf_fragmentation as rate of fragmentation to estimate , and for hash index free_percent. Documentation in [url](https://www.postgresql.org/docs/current/pgstattuple.html). 
+
+
+To free space by index you need to do VACUUM with INDEX_CLEANUP ON.
+```sql
+VACUUM (VERBOSE, FULL, INDEX_CLEANUP ON)  public.test;
+```
+
 ## Manual cleanup
 
 You can always ssh to your server and check the free spaces on disk 
