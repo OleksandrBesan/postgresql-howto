@@ -88,3 +88,9 @@ GRANT externalldata_writer TO username;
 ```
 
 For the convinience you could create roles that list other roles , and than give that role the user. 
+## Reminder 
+### Owner of objects 
+Despite role model there , if one user creates some object, another user will not be have the possibility to change that. 
+
+You should change owner of object to base owner of schema where object is - justdata_owner. 
+Then everyone who has that role could change object. 

@@ -97,3 +97,29 @@ What can be manually cleaup:
 ## Move to another drive  , if nothing works 
 
 Sometimes , actually you can only add a new drive and move tables into that new tablespace. Manual how to do that is [here](./Install%20drive%20Ubuntu%20and%20Tablespace%20Postgresql.md)
+
+
+# Free space on db with a lot of clients by killing temp tables 
+
+Somethimes when you run out of space , first thing to check is what  temp tables other users store (if you didn't configure temp on its own tablespace differ from system)
+```sql
+SELECT
+	n.nspname as SchemaName
+	,c.relname as RelationName
+	,CASE c.relkind
+	WHEN 'r' THEN 'table'
+	WHEN 'v' THEN 'view'
+	WHEN 'i' THEN 'index'
+	WHEN 'S' THEN 'sequence'
+	WHEN 's' THEN 'special'
+	END as RelationType
+	,pg_catalog.pg_get_userbyid(c.relowner) as RelationOwner               
+	,pg_size_pretty(pg_relation_size(n.nspname ||'.'|| c.relname)) as RelationSize
+FROM pg_catalog.pg_class c
+LEFT JOIN pg_catalog.pg_namespace n               
+                ON n.oid = c.relnamespace
+WHERE  c.relkind IN ('r','s') 
+AND  (n.nspname !~ '^pg_toast' and nspname like 'pg_temp%')
+ORDER BY pg_relation_size(n.nspname ||'.'|| c.relname) DESC
+; 
+```
